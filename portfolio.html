@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
   <style>
     * {
       margin: 0;
@@ -386,7 +385,7 @@
     }
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
 
-    /* BIGGER SOFTWARE ENGINEERING ANIMATION (RIGHT SIDE) */
+    /* TERMINAL ANIMATION */
     .terminal-animation {
       background: #0a0f1a;
       border-radius: 2rem;
@@ -458,7 +457,6 @@
       50% { transform: translateY(-6px); }
     }
 
-    /* other sections */
     section { padding: 5rem 0; }
     .section-title {
       font-size: 2.2rem;
@@ -489,8 +487,6 @@
       color: var(--text-secondary);
       margin-bottom: 1.2rem;
     }
-
-    /* SKILL SECTION: UPDATED WITH USER'S ACTUAL SKILLS */
     .skills-modern {
       margin-top: 2rem;
       background: transparent;
@@ -582,7 +578,6 @@
     .skill-chip:hover i {
       color: white;
     }
-    /* Personal image styling */
     .about-image {
       flex: 0.8;
       text-align: center;
@@ -637,10 +632,80 @@
     }
     .contact-info { flex: 1; }
     .contact-info h3 { font-size: 1.5rem; margin-bottom: 1rem; }
-    .social-links { display: flex; gap: 1.5rem; margin: 2rem 0; }
-    .social-links a { font-size: 1.8rem; color: var(--text-secondary); transition: var(--transition); }
-    .social-links a:hover { color: var(--accent); transform: translateY(-4px); }
-    .contact-form { flex: 1; display: flex; flex-direction: column; gap: 1rem; }
+    
+    /* MODERN LONG-WIDTH HOVER EFFECT */
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0px;
+      background: var(--accent-soft);
+      backdrop-filter: blur(4px);
+      border-radius: 80px;
+      padding: 0.7rem 1.1rem;
+      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      text-decoration: none;
+      color: var(--text-primary);
+      border: 1px solid rgba(59,130,246,0.2);
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .social-links a i {
+      font-size: 1.5rem;
+      transition: transform 0.25s ease, color 0.2s;
+      color: var(--accent);
+    }
+    .social-links a .social-label {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      max-width: 0;
+      opacity: 0;
+      transition: max-width 0.35s cubic-bezier(0.2, 0.85, 0.4, 1), opacity 0.25s ease, margin 0.25s ease;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-left: 0px;
+      letter-spacing: 0.3px;
+    }
+    .social-links a:hover {
+      background: linear-gradient(115deg, var(--accent), var(--accent-dark));
+      color: white;
+      border-color: rgba(255,255,255,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 18px 28px -12px rgba(59,130,246,0.45);
+      padding-right: 1.7rem;
+    }
+    .social-links a:hover .social-label {
+      max-width: 120px;
+      opacity: 1;
+      margin-left: 12px;
+    }
+    .social-links a:hover i {
+      transform: scale(1.07);
+      color: white !important;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    }
+    body.dark .social-links a {
+      background: rgba(96,165,250,0.12);
+      border-color: rgba(96,165,250,0.2);
+    }
+    body.dark .social-links a:hover {
+      background: linear-gradient(115deg, #3b82f6, #2563eb);
+      box-shadow: 0 18px 28px -12px #3b82f6;
+    }
+
+    /* CONTACT FORM */
+    .contact-form {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
     .contact-form input, .contact-form textarea {
       background: var(--bg-secondary);
       border: 1px solid var(--border-light);
@@ -649,7 +714,24 @@
       font-family: inherit;
       color: var(--text-primary);
     }
-    .contact-form button { background: var(--accent); border: none; color: white; font-weight: 600; cursor: pointer; }
+    .contact-form button {
+      background: var(--accent);
+      border: none;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-spinner {
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 0.6s linear infinite;
+      margin-right: 0.5rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     footer {
       text-align: center;
@@ -658,7 +740,6 @@
       color: var(--text-secondary);
     }
 
-    /* ========= SCROLL REVEAL ========= */
     .reveal {
       opacity: 0;
       transform: translateY(25px);
@@ -670,7 +751,6 @@
       transform: translateY(0);
     }
 
-    /* Mobile adjustments */
     @media (max-width: 768px) {
       .hamburger { display: block; }
       .nav-links {
@@ -706,9 +786,9 @@
       .about-image img { width: 200px; height: 200px; }
       .skill-chip { padding: 0.5rem 1.2rem; font-size: 0.85rem; }
       .skills-tab-bar { justify-content: center; }
-      .about-grid {
-        align-items: center;
-      }
+      .about-grid { align-items: center; }
+      .social-links a { padding: 0.5rem 0.9rem; }
+      .social-links a:hover { padding-right: 1.2rem; }
     }
     ::selection { background: var(--accent); color: white; }
   </style>
@@ -733,7 +813,6 @@
     </div>
   </div>
 
-  <!-- MAIN SITE -->
   <div id="mainSite" class="main-site">
     <nav class="navbar">
       <div class="container nav-container">
@@ -763,9 +842,6 @@
               <div class="hero-logo-icon"><i class="fas fa-user"></i></div>
               <div class="hero-logo-icon"><i class="fab fa-github"></i></div>
               <div class="hero-logo-icon"><i class="fas fa-code"></i></div>
-              <!-- <div class="hero-logo-icon"><i class="fab fa-css3-alt"></i></div> -->
-              <!-- <div class="hero-logo-icon"><i class="fab fa-js"></i></div>
-              <div class="hero-logo-icon"><i class="fab fa-php"></i></div> -->
             </div>
             <div class="hero-greeting"><i class="fas fa-code"></i> HELLO, I'M Kaung Min Khant</div>
             <h1 class="hero-title">Software Engineering<br>& Web-Developing</h1>
@@ -790,8 +866,6 @@
               <div class="terminal-line">$ git commit -m "responsive & modern portfolio"</div>
               <div class="terminal-line">$ █</div>
               <div class="code-icon">
-                <!-- <i class="fab fa-html"></i>
-                <i class="fab fa-css"></i> -->
                 <i class="fab fa-java"></i>
                 <i class="fab fa-php"></i>
                 <i class="fas fa-database"></i>
@@ -801,7 +875,7 @@
         </div>
       </section>
 
-      <!-- ABOUT SECTION – SKILLS UPDATED TO MATCH USER'S TECH STACK -->
+      <!-- ABOUT SECTION -->
       <section id="about">
         <div class="container">
           <h2 class="section-title reveal">About Me</h2>
@@ -809,8 +883,6 @@
             <div class="about-text reveal">
               <p>I am a motivated and passionate <strong>Software Engineering and Web Development student</strong> with a strong interest in creating modern, responsive, and user-friendly applications.</p>
               <p>I have experience developing academic and personal projects including Point of Sale systems, management systems, admin dashboards, and frontend web interfaces using <strong>HTML, CSS, Bootstrap, Tailwind CSS, JavaScript, PHP, MySQL, and Java</strong>.</p>
-              
-              <!-- UPDATED SKILL PANELS WITH CORRECT TECHNOLOGIES -->
               <div class="skills-modern">
                 <div class="skills-tab-bar">
                   <button class="skill-cat-btn active" data-cat="frontend"><i class="fas fa-laptop-code"></i> Frontend Core</button>
@@ -818,7 +890,6 @@
                   <button class="skill-cat-btn" data-cat="tools"><i class="fas fa-tools"></i> Tools & More</button>
                 </div>
                 <div class="skills-panels">
-                  <!-- Frontend Core: HTML, CSS, Bootstrap, Tailwind, JavaScript -->
                   <div class="skills-panel active" id="panel-frontend">
                     <div class="skill-grid">
                       <div class="skill-chip"><i class="fab fa-html5"></i> HTML</div>
@@ -826,12 +897,8 @@
                       <div class="skill-chip"><i class="fab fa-bootstrap"></i> Bootstrap</div>
                       <div class="skill-chip"><i class="fa-solid fa-wind"></i> Tailwind CSS</div>
                       <div class="skill-chip"><i class="fab fa-js"></i> JavaScript</div>
-                      
-
-
                     </div>
                   </div>
-                  <!-- Backend & DB: PHP, MySQL, Java -->
                   <div class="skills-panel" id="panel-backend">
                     <div class="skill-grid">
                       <div class="skill-chip"><i class="fab fa-php"></i> PHP</div>
@@ -840,7 +907,6 @@
                       <div class="skill-chip"><i class="fab fa-node-js"></i> Node.js</div>
                     </div>
                   </div>
-                  <!-- Tools & More (additional relevant tools) -->
                   <div class="skills-panel" id="panel-tools">
                     <div class="skill-grid">
                       <div class="skill-chip"><i class="fab fa-git-alt"></i> Git & GitHub</div>
@@ -860,7 +926,7 @@
         </div>
       </section>
 
-      <!-- PROJECTS SECTION (unchanged) -->
+      <!-- PROJECTS SECTION -->
       <section id="projects" style="background: var(--bg-secondary);">
         <div class="container">
           <h2 class="section-title reveal">Projects</h2>
@@ -890,7 +956,7 @@
         </div>
       </section>
 
-      <!-- CONTACT SECTION (unchanged) -->
+      <!-- CONTACT SECTION – AUTO SEND with FALLBACK (clean email body) -->
       <section id="contact">
         <div class="container">
           <h2 class="section-title reveal">Let's Connect</h2>
@@ -899,19 +965,28 @@
               <h3>Collaborate & Create</h3>
               <p>Let’s collaborate and build modern, scalable web and software solutions.</p>
               <div class="social-links">
-                <a href="https://github.com/Kaaung-223" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://t.me/K23mm2" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
-                <!-- <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a> -->
-                <a href="https://mail.google.com/mail/u/0/#inbox" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://github.com/Kaaung-223" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                  <i class="fab fa-github"></i>
+                  <span class="social-label">GitHub</span>
+                </a>
+                <a href="https://t.me/K23mm2" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+                  <i class="fab fa-telegram"></i>
+                  <span class="social-label">Telegram</span>
+                </a>
+                <a href="mailto:kk8264483@gmail.com" aria-label="Email">
+                  <i class="fa-solid fa-envelope"></i>
+                  <span class="social-label">Email</span>
+                </a>
               </div>
               <p style="margin-top: 1rem;"><i class="fas fa-envelope"></i> kk8264483@gmail.com</p>
-              <p><i class="fas fa-map-marker-alt"></i> Myanmar / Yangon </p>
+              <p><i class="fas fa-map-marker-alt"></i> Myanmar / Yangon</p>
             </div>
+
             <form id="contactForm" class="contact-form reveal">
               <input type="text" id="nameInput" placeholder="Your name" required>
-              <input type="email" id="emailInput" placeholder="Email address" required>
+              <input type="email" id="emailInput" placeholder="Your email address" required>
               <textarea rows="4" id="msgInput" placeholder="Tell me about your vision..."></textarea>
-              <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Message</button>
+              <button type="submit" id="submitBtn" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Message</button>
             </form>
           </div>
         </div>
@@ -925,7 +1000,7 @@
   </div>
 
   <script>
-    // ========== WELCOME OVERLAY AUTO-TRANSITION ==========
+    // ========== WELCOME OVERLAY ==========
     const overlay = document.getElementById('welcomeOverlay');
     const mainSite = document.getElementById('mainSite');
     setTimeout(() => {
@@ -1049,7 +1124,7 @@
       });
     });
 
-    // navbar scroll effect
+    // ========== NAVBAR SCROLL EFFECT ==========
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 20) {
@@ -1061,22 +1136,78 @@
       }
     });
 
-    // contact form
-    const contactFormElem = document.getElementById('contactForm');
-    if (contactFormElem) {
-      contactFormElem.addEventListener('submit', (e) => {
+    // ========== FORM HANDLER (auto-send + clean fallback) ==========
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        
         const name = document.getElementById('nameInput').value.trim();
         const email = document.getElementById('emailInput').value.trim();
         const message = document.getElementById('msgInput').value.trim();
-        if (!name || !email || !message) { alert('✧ Please fill all fields ✧'); return; }
-        if (!email.includes('@') || !email.includes('.')) { alert('✧ Valid email required ✧'); return; }
-        alert(`✨ Thanks ${name}! Your message reached. I'll reply soon. ✨`);
-        contactFormElem.reset();
+        
+        if (!name || !email || !message) {
+          alert('✧ Please fill all fields ✧');
+          return;
+        }
+        if (!email.includes('@') || !email.includes('.')) {
+          alert('✧ Please enter a valid email address ✧');
+          return;
+        }
+        
+        // Show loading state
+        const originalText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="btn-spinner"></span> Sending...';
+        
+        // Try auto-send first
+        let autoSent = false;
+        try {
+          const response = await fetch('https://formsubmit.co/ajax/kk8264483@gmail.com', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+              name: name,
+              email: email,
+              message: message,
+              _subject: `Portfolio message from ${name}`
+            })
+          });
+          
+          const result = await response.json();
+          if (result.success) {
+            autoSent = true;
+            alert(`✨ Thanks ${name}! Your message has been sent directly to my email. I'll reply soon. ✨`);
+            contactForm.reset();
+          } else {
+            autoSent = false;
+          }
+        } catch (error) {
+          console.log("Auto-send failed, using fallback");
+          autoSent = false;
+        }
+        
+        // If auto-send failed, open email client with ONLY the message body (no extra fields)
+        if (!autoSent) {
+          const subject = `Message from ${name} via portfolio`;
+          // Only the user's message, nothing else
+          const body = message.replace(/\n/g, '%0A');
+          window.location.href = `mailto:kk8264483@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          alert(`✨ Thanks ${name}! Your email client opened with your message. Just click Send. ✨`);
+          contactForm.reset();
+        }
+        
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
       });
     }
 
-    // ========== UPDATED SKILL TAB CONTROLS ==========
+    // ========== SKILL TAB CONTROLS ==========
     const catBtns = document.querySelectorAll('.skill-cat-btn');
     const panelsMap = {
       frontend: document.getElementById('panel-frontend'),
@@ -1100,7 +1231,7 @@
       });
     });
 
-    // footer year update
+    // ========== FOOTER YEAR ==========
     const footerP = document.querySelector('footer p');
     if (footerP) {
       const year = new Date().getFullYear();
