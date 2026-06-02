@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
-    /* GLOBAL: hide all scrollbars but keep scrolling */
+    /* hide all scrollbars but keep scrolling */
     * {
       scrollbar-width: none;
       -ms-overflow-style: none;
@@ -16,7 +16,7 @@
     *::-webkit-scrollbar {
       display: none;
     }
-
+    /* delete spacing inner and outer */
     * {
       margin: 0;
       padding: 0;
@@ -24,16 +24,23 @@
     }
 
     :root {
+      /* main background */
       --bg-primary: #ffffff;
+      /* secondary background */
       --bg-secondary: #f8fafc;
+      /* card container  */
       --surface: #ffffff;
       --text-primary: #0f172a;
       --text-secondary: #334155;
+      /* main theme color */
       --accent: #3b82f6;
+      /* hover color */
       --accent-dark: #2563eb;
+      /* light accent background */
       --accent-soft: #eff6ff;
       --card-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.02);
       --border-light: #e2e8f0;
+      /* animation effect */
       --transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
       --nav-bg: rgba(255, 255, 255, 0.85);
     }
@@ -57,17 +64,21 @@
       color: var(--text-primary);
       line-height: 1.5;
       transition: background 0.2s ease, color 0.2s ease;
+      /* go to about to home is go to smooth */
       scroll-behavior: smooth;
     }
 
     /* ========= WELCOME OVERLAY (unchanged) ========= */
     .welcome-overlay {
+      /* do not do scroll */
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
+      /* change color */
       background: radial-gradient(circle at 30% 20%, #0a0f2a, #010115);
+      /* see first */
       z-index: 9999;
       display: flex;
       align-items: center;
@@ -77,23 +88,36 @@
       opacity: 1;
       visibility: visible;
     }
-    .welcome-overlay.hide { opacity: 0; visibility: hidden; }
-    .welcome-content { text-align: center; max-width: 90%; }
+
+    .welcome-overlay.hide { 
+      opacity: 0; 
+      visibility: hidden; 
+    }
+
+    .welcome-content { 
+      text-align: center; 
+      max-width: 90%;
+     }
+
     .logo-row {
+      /* row  */
       display: flex;
       justify-content: center;
       gap: 2rem;
       margin-bottom: 2rem;
+      /* sereen small logo down go */
       flex-wrap: wrap;
       opacity: 0;
       transform: translateX(-80px);
       animation: slideLeftToCenter 1.2s cubic-bezier(0.2, 0.8, 0.4, 1) forwards;
       animation-delay: 0.1s;
     }
+
     @keyframes slideLeftToCenter {
       0% { opacity: 0; transform: translateX(-80px); }
       100% { opacity: 1; transform: translateX(0); }
     }
+    
     .logo-icon {
       font-size: 2.6rem;
       background: rgba(96, 165, 250, 0.15);
