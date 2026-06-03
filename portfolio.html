@@ -1080,7 +1080,7 @@
   </div>
 
   <script>
-    // JavaScript unchanged (only modal tech hover added via CSS)
+    // JavaScript unchanged except contact form: direct email via mailto (no external API)
     const overlay = document.getElementById('welcomeOverlay');
     const mainSite = document.getElementById('mainSite');
     setTimeout(() => {
@@ -1210,41 +1210,27 @@
       }
     });
 
+    // UPDATED: direct email via mailto, no external fetch, no spinner, instant reach to kk8264483@gmail.com
     const contactFormElem = document.getElementById('contactForm');
     const submitBtn = document.getElementById('submitBtn');
     if (contactFormElem) {
-      contactFormElem.addEventListener('submit', async (e) => {
+      contactFormElem.addEventListener('submit', (e) => {
         e.preventDefault();
         const name = document.getElementById('nameInput').value.trim();
         const email = document.getElementById('emailInput').value.trim();
         const message = document.getElementById('msgInput').value.trim();
         if (!name || !email || !message) { alert('✧ Please fill all fields ✧'); return; }
         if (!email.includes('@') || !email.includes('.')) { alert('✧ Valid email required ✧'); return; }
-        const originalText = submitBtn.innerHTML;
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span class="btn-spinner"></span> Sending...';
-        let autoSent = false;
-        try {
-          const response = await fetch('https://formsubmit.co/ajax/kk8264483@gmail.com', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify({ name, email, message, _subject: `Portfolio message from ${name}` })
-          });
-          const result = await response.json();
-          if (result.success) autoSent = true;
-        } catch (err) { autoSent = false; }
-        if (autoSent) {
-          alert(`✨ Thanks ${name}! Message sent directly. I'll reply soon. ✨`);
-          contactFormElem.reset();
-        } else {
-          const subject = `Message from ${name} via portfolio`;
-          const body = message.replace(/\n/g, '%0A');
-          window.location.href = `mailto:kk8264483@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-          alert(`✨ Thanks ${name}! Your email client opened with your message. Just click Send. ✨`);
-          contactFormElem.reset();
-        }
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
+        
+        // Build email subject and body
+        const subject = `Portfolio message from ${name}`;
+        const body = `Name: ${name}%0AEmail: ${email}%0A%0AMessage:%0A${message.replace(/\n/g, '%0A')}`;
+        const mailtoLink = `mailto:kk8264483@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+        
+        // Open default email client
+        window.location.href = mailtoLink;
+        alert(`✨ Thanks ${name}! Your email client will open. Just review and send the message — it will reach me directly (kk8264483@gmail.com). ✨`);
+        contactFormElem.reset();
       });
     }
 
